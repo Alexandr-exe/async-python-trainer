@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Async/Await Тренажёр</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script type="module" src="/static/script.js"></script>
+    <style>
+        /* Обновлённые стили */
+        .level-indicator {
+            writing-mode: vertical-lr;
+            transform: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-right: 1rem;
+            padding: 0.5rem 0;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 2px solid #ecf0f1;
+        }
+
+        .level-progress {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow-x: auto;
+            justify-content: center;
+        }
+
+        .level-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .level-dot.completed {
+            background: #27ae60;
+            box-shadow: 0 2px 5px rgba(39, 174, 96, 0.3);
+        }
+
+        .level-dot:hover {
+            transform: scale(1.1);
+        }
+
+        .theory-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .theory-content {
+            flex-grow: 1;
+        }
+
+        @media (max-width: 768px) {
+            .level-indicator {
+                writing-mode: horizontal-tb;
+                transform: none;
+                border-right: none;
+                border-bottom: 2px solid #ecf0f1;
+                margin-right: 0;
+                margin-bottom: 1rem;
+                padding: 0.5rem 0;
+            }
+            
+            .theory-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="level-progress" id="level-progress"></div>
+        
+        <div class="theory-panel">
+            <div class="theory-header">
+                <div class="level-indicator">
+                    <span>Уровень </span>
+                    <span id="level-num">1</span>
+                </div>
+                <div class="theory-content">
+                    <div id="theory"></div>
+                    <div id="task" class="task-box">
+                        <h3>Задание:</h3>
+                        <p id="task-text"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="hint-btn" class="hint-button">Показать подсказку</button>
+            <div id="hint-area" class="hint-area"></div>
+        </div>
+        
+        <!-- Остальная часть остаётся без изменений -->
+        <div class="editor-panel">
+            <textarea id="code-editor" spellcheck="false"></textarea>
+            
+            <div class="controls">
+                <button id="run-btn">Запустить</button>
+                <button id="next-btn" disabled>Следующий уровень</button>
+            </div>
+            
+            <div id="output" class="output-container"></div>
+            
+            <div class="visualization">
+                <div id="frog">🐸</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
